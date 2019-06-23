@@ -49,14 +49,18 @@ if __name__ == '__main__':
     video_id = [d['videoID'] for d in dataset]
 
     # load embedding model
+
+    ##########################################################################
     if feat_type == 'smt_feat':
         model = vid_enc.Model()
-        serializers.load_npz('data/trained_model/model_par', model)
+        #serializers.load_npz('data/trained_model/model_par', model)
     elif feat_type == 'vgg':
-        from func.nets.Seg_vgg19 import Model
+        from func.nets.vid_enc_vgg19 import Model
         model = Model()
     else:
         raise RuntimeError('[invalid feat_type] use smt_feat or vgg')
+    ##########################################################################
+
 
     for v_id in video_id:
 
